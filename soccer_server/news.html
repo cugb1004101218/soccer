@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资讯</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.5,user-scalable=1,target-densitydpi=device-dpi">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no" />
+    <style>
+        html, body {
+            font-family: '微软雅黑',"Helvetica Neue",Helvetica,STHeiTi,sans-serif;
+            color: #333;
+            font-size: 16px;
+        }
+        html, body, ul, li, h1, h2, h3, h4, h5, h6, img, span, i, div, input, p {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        ul, ol, li {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            list-style: none;
+        }
+        .news-wrap {
+            margin: 12px;
+        }
+        .news-title {
+            color: #000;
+            font-size: 22px;
+        }
+        .news-nav {
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+        .news-author {
+            display: inline-block;
+            color: #37C750;
+            padding-right: 10px;
+            max-width: 250px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            -moz-text-overflow: ellipsis;
+            -webkit-text-overflow: ellipsis;
+        }
+        .news-time {
+            display: inline-block;
+            vertical-align: top;
+            color: #aaa;
+        }
+        .content-img {
+            width: 100%;
+        }
+        .content {
+            margin: 6px 0;
+            text-indent: 2em;
+            line-height: 1.5;
+            font-size: 16px;
+        }
+        .news-source {
+            margin-bottom: 20px;
+        }
+        #source {
+            color: #FFD800;
+        }
+    </style>
+</head>
+<body>
+    <div class="news-wrap">
+        <div id="title" class="news-title">{{news["rewritten_title"]}}</div>
+        <div class="news-nav">
+            <p class="news-author">{{news["author"]}}</p>
+            <p class="news-time">{{news["publish_time"]}}</p>
+        </div>
+        {% for block in news["content"] %}
+            {%if "string" in block%}
+                <div class="content">{{block["string"]}}</div>
+            {%elif "img" in block%}
+                <img class="content-img" src="{{block["img"]}}" alt="">
+            {%end%}
+        {%end%}
+        <p class="news-source">来源：<span id="source">{{news["source"]}}</span></p>
+    </div>
+    <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+</body>
+</html>
