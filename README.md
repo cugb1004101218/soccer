@@ -10,7 +10,7 @@
     赛程：http://115.28.170.176:8000/match?compname=英超
 
 # 爬虫 soccer_spider
-基于scrapy，数据库用的mongodb
+基于scrapy，数据库用的mongodb，redis作为缓存
 
 
 # http接口 soccer_server
